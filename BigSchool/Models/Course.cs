@@ -1,18 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
-
 namespace BigSchool.Models
 {
-    public class Course
-    {
-        public int Id { get; set; }
-        [Required]
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
-        public ApplicationUser Lecturer { get; set; }
+    [Table("Course")]
+    public partial class Course
+    {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Course()
+        {
+            Attendance = new HashSet<Attendance>();
+        }
+
+        public int Id { get; set; }
+
         [Required]
+        [StringLength(128)]
         public string LecturerId { get; set; }
 
         [Required]
@@ -21,10 +27,16 @@ namespace BigSchool.Models
 
         public DateTime DateTime { get; set; }
 
-        public Category Category { get; set; }
-        [Required]
-        public byte CategoryId { get; set; }
+        public int CategoryId { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Attendance> Attendance { get; set; }
+        public List<Category> ListCategory = new List<Category>();
+
+        public string Name;
+
+        public virtual Category Category { get; set; }
+        public string LectureName;
 
     }
-  
 }
