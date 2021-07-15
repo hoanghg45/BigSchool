@@ -16,6 +16,8 @@ namespace BigSchool.Models
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Course> Course { get; set; }
 
+        public virtual DbSet<Following>
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Category>()
