@@ -18,6 +18,6 @@ namespace BigSchool.Models
 
         public string ClaimValue { get; set; }
 
-        public virtual AspNetUsers AspNetUsers { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

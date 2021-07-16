@@ -15,8 +15,7 @@ namespace BigSchool.Models
         public virtual DbSet<Attendance> Attendance { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Course> Course { get; set; }
-
-        public virtual DbSet<Following>
+        public virtual DbSet<Following> Following { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -26,7 +25,7 @@ namespace BigSchool.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Course>()
-                .HasMany(e => e.Attendances)
+                .HasMany(e => e.Attendance)
                 .WithRequired(e => e.Course)
                 .WillCascadeOnDelete(false);
         }
