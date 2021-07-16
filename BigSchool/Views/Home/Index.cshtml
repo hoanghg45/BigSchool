@@ -74,15 +74,16 @@
                     });
             });
         });
-        $(".js-toggle-follow").click(function (e) {
+        $(".js-tongle-follow").click(function (e) {
             var button = $(e.target);
             $.post("/api/followings", { followeeId: button.attr("data-user-id") })
                 .done(function () {
                     button.text("Following");
+                    alert("Follow sucessfully!")
                 })
                 .fail(function () {
                     alert("Something failed");
-                });
-        });
+                    });
+            });
     </script>
 }
